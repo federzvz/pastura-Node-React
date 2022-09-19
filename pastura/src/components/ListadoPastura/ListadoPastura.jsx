@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 
 const styles = {
   Table: {
@@ -8,6 +9,18 @@ const styles = {
 };
 
 const ListadoPastura = () => {
+  const [pasturas, setPasturas] = useState([]);
+
+  useEffect(() => {
+    axios
+      .post("http://localhost:1234/pasturas/getAll")
+      .then((response) => {
+        setPasturas(response.data);
+      })
+
+    // empty dependency array means this effect will only run once (like componentDidMount in classes)
+  }, []);
+
   return (
     <div style={styles.Table}>
       <div className="row">
@@ -20,32 +33,19 @@ const ListadoPastura = () => {
           <table className="table table-striped table-dark">
             <thead className="bg-primary table-dark">
               <tr>
-                <th scope="col">GRAMINEAS</th>
+                <th scope="col">Familia</th>
+                <th scope="col">Especie</th>
                 <th scope="col">Tipo Vegetativo</th>
-                <th scope="col">Rizoma engrozado</th>
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>Pastura x</td>
-                <td>Descripción de la pastura x</td>
-                <td>Rizoma x</td>
-              </tr>
-              <tr>
-                <td>Pastura x</td>
-                <td>Descripción de la pastura x</td>
-                <td>Rizoma x</td>
-              </tr>
-              <tr>
-                <td>Pastura x</td>
-                <td>Descripción de la pastura x</td>
-                <td>Rizoma x</td>
-              </tr>
-              <tr>
-                <td>Pastura x</td>
-                <td>Descripción de la pastura x</td>
-                <td>Rizoma x</td>
-              </tr>
+              {pasturas.map((pastura) => (
+                <tr key={pastura._id}>
+                  <td>{pastura.Familia}</td>
+                  <td>{pastura.Especie}</td>
+                  <td>{pastura.TipoVegetativo}</td>
+                </tr>
+              ))}
             </tbody>
           </table>
         </div>

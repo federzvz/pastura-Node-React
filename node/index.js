@@ -5,6 +5,11 @@ const bodyParser = require('body-parser');
 const pastura = require('./routes/pastura.route'); 
 //const cors = require('cors');
 const app = express();
+const cors = require('cors');
+
+app.use(cors({
+    origin: '*'
+}));
 
 
 // Conexion a mongo

@@ -44,3 +44,10 @@ exports.pastura_create = function (req, res,next) {
         res.send('Pastura creado satisfactoriamente')
     })
 }
+
+exports.pastura_getAll = function (req, res,next) {
+    Pastura.find({}, function (err, pasturas) {
+        if (err) return next(err);
+        res.send(pasturas);
+    });
+}
