@@ -1,24 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
+import { Fragment } from "react";
+import "./App.css";
+import FiltroPastura from "./components/FiltroPastura/FiltroPastura";
+import Footer from "./components/Footer/Footer";
+import ListadoPastura from "./components/ListadoPastura/ListadoPastura";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Fragment>
+      <div className="App">
+        <header className="App-header">
+          <FiltroPastura />
+          <ListadoPastura />
+        </header>
+      </div>
+      <Footer />
+    </Fragment>
   );
 }
 
