@@ -10,7 +10,6 @@ function App() {
       <div className="App">
         <header className="App-header">
           <FiltroPastura />
-          <ListadoPastura />
         </header>
       </div>
       <Footer />
