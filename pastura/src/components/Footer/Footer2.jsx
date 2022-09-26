@@ -13,6 +13,10 @@ const styles = {
     backgroundRepeat: "no-repeat",
     border: "none",
     cursor: "pointer",
+    transition: "all 0.3s ease-in-out",
+    "&:hover": {
+      transform: "scale(1.1)",
+    },
   }
 };
 
@@ -25,7 +29,7 @@ const Footer2 = () => {
             <span className="me-3">Tecnologo Informático Paysandú</span>
 
             <a href="https://www.fing.edu.uy/tecnoinf/paysandu/index.html">
-              <i style={styles.Icon}  ></i>
+              <i style={styles.Icon}></i>
             </a>
           </p>
         </section>
