@@ -13,7 +13,6 @@ const styles = {
     backgroundRepeat: "no-repeat",
     border: "none",
     cursor: "pointer",
-
   }
 };
 
