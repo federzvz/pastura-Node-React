@@ -12,3 +12,12 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
+
+.row{
+  margin-top: 5px !important;
+}
+
+/* .form-label{
+  vertical-align: middle !important; 
+  line-height: 24px !important;
+} */

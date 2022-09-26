@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Fragment } from "react";
 import axios from "axios";
+import CustomModal from "../DetallePastura/DetallePastura";
 
 const styles = {
   Table: {
@@ -53,6 +54,11 @@ const filtrarPasturas = (pasturas, filtros) => {
 
 const ListadoPastura = (filtros) => {
   const [pasturas, setPasturas] = useState([]);
+  const [pasturaActual, setPasturaActual] = useState([]);
+  const [show, setShow] = useState(false);
+  const handlePastura = (pastura) => setPasturaActual(pastura);
+  const handleShow = () => setShow(true);
+  const handleClose = () => setShow(false);
 
   useEffect(() => {
     axios.post("http://localhost:1234/pasturas/getAll").then((response) => {
@@ -63,10 +69,12 @@ const ListadoPastura = (filtros) => {
   }, []);
 
   return (
-    <div style={styles.Table}>
-      <div className="row">
-        <div className="col-12">
-          <h1>Listado de Pasturas</h1>
+    <Fragment>
+      <div style={styles.Table}>
+        <div className="row">
+          <div className="col-12">
+            <h1>Listado de Pasturas</h1>
+          </div>
         </div>
       </div>
       <div className="row">
@@ -84,7 +92,10 @@ const ListadoPastura = (filtros) => {
               {filtrarPasturas(pasturas, filtros).map((pastura) => (
                 <tr
                   key={pastura._id}
-                  onClick={() => mostrarElementoSeleccionado(pastura)}
+                  onClick={() => {
+                    handlePastura(pastura);
+                    handleShow();
+                  }}
                 >
                   <td>{pastura.Familia}</td>
                   <td>{pastura.Especie}</td>
@@ -96,7 +107,13 @@ const ListadoPastura = (filtros) => {
           </table>
         </div>
       </div>
-    </div>
+
+      <CustomModal
+        show={show}
+        pastura={pasturaActual}
+        close={() => handleClose()}
+      />
+    </Fragment>
   );
 };
 
