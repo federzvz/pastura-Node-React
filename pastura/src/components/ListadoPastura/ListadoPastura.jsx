@@ -90,7 +90,7 @@ const ListadoPastura = (filtros) => {
             </thead>
             <tbody>
               {filtrarPasturas(pasturas, filtros).map((pastura) => (
-                <tr
+                <tr className="fila"
                   key={pastura._id}
                   onClick={() => {
                     handlePastura(pastura);

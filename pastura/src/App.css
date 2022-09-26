@@ -21,3 +21,14 @@
   vertical-align: middle !important; 
   line-height: 24px !important;
 } */
+
+.example:hover {
+  transform: scale(1.5);
+}
+.fila{
+  cursor: pointer;
+}
+.fila:hover {
+  transform: scale(1.1);
+  background-color: #ffffff;
+}

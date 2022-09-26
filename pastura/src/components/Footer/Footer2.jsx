@@ -13,6 +13,7 @@ const styles = {
     backgroundRepeat: "no-repeat",
     border: "none",
     cursor: "pointer",
+
   }
 };
 
@@ -24,7 +25,7 @@ const Footer2 = () => {
           <p className="d-flex justify-content-center align-items-center">
             <span className="me-3">Tecnologo Informático Paysandú</span>
 
-            <a href="https://www.fing.edu.uy/tecnoinf/paysandu/index.html">
+            <a className="example" href="https://www.fing.edu.uy/tecnoinf/paysandu/index.html">
               <i style={styles.Icon}  ></i>
             </a>
           </p>
