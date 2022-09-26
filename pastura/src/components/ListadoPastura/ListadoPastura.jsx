@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Fragment } from "react";
 import axios from "axios";
+import CustomModal from "../DetallePastura/DetallePastura";
 
 const styles = {
   Table: {
@@ -10,6 +11,11 @@ const styles = {
 
 const ListadoPastura = () => {
   const [pasturas, setPasturas] = useState([]);
+  const [pasturaActual, setPasturaActual] = useState([]);
+  const [show, setShow] = useState(false);
+  const handlePastura = (pastura) => setPasturaActual(pastura);
+  const handleShow = () => setShow(true);
+  const handleClose = () => setShow(false);
 
   useEffect(() => {
     axios
@@ -21,36 +27,44 @@ const ListadoPastura = () => {
     // empty dependency array means this effect will only run once (like componentDidMount in classes)
   }, []);
 
+  
   return (
-    <div style={styles.Table}>
-      <div className="row">
-        <div className="col-12">
-          <h1>Listado de Pasturas</h1>
+    <Fragment>
+      <div style={styles.Table}>
+        <div className="row">
+          <div className="col-12">
+            <h1>Listado de Pasturas</h1>
+          </div>
         </div>
-      </div>
-      <div className="row">
-        <div className="col-12">
-          <table className="table table-striped table-dark">
-            <thead className="bg-primary table-dark">
-              <tr>
-                <th scope="col">Familia</th>
-                <th scope="col">Especie</th>
-                <th scope="col">Tipo Vegetativo</th>
-              </tr>
-            </thead>
-            <tbody>
-              {pasturas.map((pastura) => (
-                <tr key={pastura._id}>
-                  <td>{pastura.Familia}</td>
-                  <td>{pastura.Especie}</td>
-                  <td>{pastura.TipoVegetativo}</td>
+        <div className="row">
+          <div className="col-12">
+            <table className="table table-striped table-dark">
+              <thead className="bg-primary table-dark">
+                <tr>
+                  <th scope="col">Familia</th>
+                  <th scope="col">Especie</th>
+                  <th scope="col">Tipo Vegetativo</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                {pasturas.map((pastura) => (
+                  <tr key={pastura._id}
+                    onClick={() => { handlePastura(pastura); handleShow();}}
+                  >
+                    <td>{pastura.Familia}</td>
+                    <td>{pastura.Especie}</td>
+                    <td>{pastura.TipoVegetativo}
+                </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
-    </div>
+      <CustomModal show={show} pastura={pasturaActual} close={() => handleClose()}/>
+      
+    </Fragment>
   );
 };
 

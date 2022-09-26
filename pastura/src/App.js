@@ -2,6 +2,7 @@ import { Fragment } from "react";
 import "./App.css";
 import FiltroPastura from "./components/FiltroPastura/FiltroPastura";
 import Footer from "./components/Footer/Footer";
+import Footer2 from "./components/Footer/Footer2";
 import ListadoPastura from "./components/ListadoPastura/ListadoPastura";
 
 function App() {
@@ -13,7 +14,8 @@ function App() {
           <ListadoPastura />
         </header>
       </div>
-      <Footer />
+      {/* <Footer /> */}
+      <Footer2 />
     </Fragment>
   );
 }
