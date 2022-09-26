@@ -61,7 +61,7 @@ const ListadoPastura = (filtros) => {
   const handleClose = () => setShow(false);
 
   useEffect(() => {
-    axios.post("http://localhost:1234/pasturas/getAll").then((response) => {
+    axios.post("https://pastura-node-react.federzvz.repl.co/pasturas/getAll").then((response) => {
       setPasturas(response.data);
     });
 
