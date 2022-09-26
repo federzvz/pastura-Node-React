@@ -1,5 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const path = require('path');
 
 // Importar las rutas de los productos
 const pastura = require('./routes/pastura.route'); 
