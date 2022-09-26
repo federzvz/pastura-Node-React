@@ -37,6 +37,8 @@ app.use('/pasturas', pastura);
 
 let port = 1234;
 
+app.use(express.static(path.resolve(__dirname, '../pastura/build')));
+
 app.get('*', (req, res) => {
     res.sendFile(path.resolve(__dirname, '../pastura/build', 'index.html'));
   });
