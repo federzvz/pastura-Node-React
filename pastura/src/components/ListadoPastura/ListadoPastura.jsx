@@ -18,9 +18,38 @@ const filtrarPasturas = (pasturas, filtros) => {
 
   console.log(filtrosAplicados);
 
+  if (filtrosAplicados.TipoVegetativo !== "") {
+    pasturasFiltradas = pasturasFiltradas.filter(
+      (pastura) => pastura.TipoVegetativo === filtrosAplicados.TipoVegetativo
+    );
+  }
+
+  if (filtrosAplicados.RizomaEngrosado !== "") {
+    console.log(
+      "pasturas:",
+      pasturasFiltradas[0].RizomaEngrosado.toString(),
+      "filtros:",
+      filtrosAplicados.RizomaEngrosado
+    );
+
+    pasturasFiltradas = pasturasFiltradas.filter((pastura) => {
+      if (pastura.RizomaEngrosado !== undefined) {
+        return (
+          pastura.RizomaEngrosado.toString() == filtrosAplicados.RizomaEngrosado
+        );
+      }
+    });
+  }
+
   if (filtrosAplicados.Mocollo1 !== "") {
     pasturasFiltradas = pasturasFiltradas.filter(
       (pastura) => pastura.Mocollo1 === filtrosAplicados.Mocollo1
+    );
+  }
+
+  if (filtrosAplicados.Mocollo2 !== "") {
+    pasturasFiltradas = pasturasFiltradas.filter(
+      (pastura) => pastura.Mocollo2 === filtrosAplicados.Mocollo2
     );
   }
 
@@ -31,9 +60,33 @@ const filtrarPasturas = (pasturas, filtros) => {
     );
   }
 
+  if (filtrosAplicados.FormaLigula !== "") {
+    pasturasFiltradas = pasturasFiltradas.filter(
+      (pastura) => pastura.FormaLigula === filtrosAplicados.FormaLigula
+    );
+  }
+
+  if (filtrosAplicados.Tamano !== "") {
+    pasturasFiltradas = pasturasFiltradas.filter(
+      (pastura) => pastura.Tamano === filtrosAplicados.Tamano
+    );
+  }
+
+  if (filtrosAplicados.ColorLigula !== "") {
+    pasturasFiltradas = pasturasFiltradas.filter(
+      (pastura) => pastura.ColorLigula === filtrosAplicados.ColorLigula
+    );
+  }
+
   if (filtrosAplicados.FormaLamina !== "") {
     pasturasFiltradas = pasturasFiltradas.filter(
       (pastura) => pastura.FormaLamina === filtrosAplicados.FormaLamina
+    );
+  }
+
+  if (filtrosAplicados.Canaliculada !== "") {
+    pasturasFiltradas = pasturasFiltradas.filter(
+      (pastura) => pastura.Canaliculada === filtrosAplicados.Canaliculada
     );
   }
 
@@ -61,9 +114,11 @@ const ListadoPastura = (filtros) => {
   const handleClose = () => setShow(false);
 
   useEffect(() => {
-    axios.post("https://pastura-node-react.federzvz.repl.co/pasturas/getAll").then((response) => {
-      setPasturas(response.data);
-    });
+    axios
+      .post("https://pastura-node-react.federzvz.repl.co/pasturas/getAll")
+      .then((response) => {
+        setPasturas(response.data);
+      });
 
     // empty dependency array means this effect will only run once (like componentDidMount in classes)
   }, []);
@@ -90,7 +145,8 @@ const ListadoPastura = (filtros) => {
             </thead>
             <tbody>
               {filtrarPasturas(pasturas, filtros).map((pastura) => (
-                <tr className="fila"
+                <tr
+                  className="fila"
                   key={pastura._id}
                   onClick={() => {
                     handlePastura(pastura);
