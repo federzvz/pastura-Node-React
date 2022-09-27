@@ -24,6 +24,7 @@ const FiltroPastura = () => {
     Tamano: "",
     ColorLigula: "",
     FormaLamina: "",
+    Canaliculada: "",
     TipoLamina: "",
     TipoProductivo: "",
   });
@@ -231,10 +232,9 @@ const FiltroPastura = () => {
           <option value="" selected>
             -- Canaliculada --
           </option>
-          <option value="Linear">Linear</option>
-          <option value="Navicular">Navicular</option>
-          <option value="Linear-Lanceolada">Linear-Lanceolada</option>
-          <option value="Lanceolada">Lanceolada</option>
+          <option value="Canaliculada">Canaliculada</option>
+          <option value="Acanalada">Acanalada</option>
+          <option value="Ligeramente canaliculada">Ligeramente canaliculada</option>
         </select>
         <select
           class="form-select form-select-sm mb-3"
