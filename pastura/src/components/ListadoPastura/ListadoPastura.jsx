@@ -1,15 +1,26 @@
 import React, { useState, useEffect, Fragment } from "react";
 import axios from "axios";
 import CustomModal from "../DetallePastura/DetallePastura";
+import Table from 'react-bootstrap/Table';
 
-const styles = {
-  Table: {
-    width: "80%",
-    marginTop: "210px",
-  },
+// const styles = {
+//   Table: {
+//     width: "80%",
+    // marginTop: "210px",
+//   },
+// };
+const Styles={
+  width: "100%"
+};
+const Styles2={
+  fontSize: "1.5rem"
+};
+const Styles3={
+  fontSize: "1.2rem"
 };
 
-const mostrarElementoSeleccionado = (objeto) => {};
+
+const mostrarElementoSeleccionado = (objeto) => { };
 
 const filtrarPasturas = (pasturas, filtros) => {
   let pasturasFiltradas = pasturas;
@@ -61,7 +72,7 @@ const ListadoPastura = (filtros) => {
   const handleClose = () => setShow(false);
 
   useEffect(() => {
-    axios.post("https://pastura-node-react.federzvz.repl.co/pasturas/getAll").then((response) => {
+    axios.post("http://localhost:1234/pasturas/getAll").then((response) => {
       setPasturas(response.data);
     });
 
@@ -70,22 +81,22 @@ const ListadoPastura = (filtros) => {
 
   return (
     <Fragment>
-      <div style={styles.Table}>
-        <div className="row">
+      <div style={{marginTop: "210px"}}>
+        <div className="row" >
           <div className="col-12">
-            <h1>Listado de Pasturas</h1>
+            <h2>Listado de Pasturas</h2>
           </div>
         </div>
       </div>
       <div className="row">
         <div className="col-12">
-          <table className="table table-striped table-dark">
-            <thead className="bg-primary table-dark">
-              <tr>
-                <th scope="col">Familia</th>
-                <th scope="col">Especie</th>
-                <th scope="col">Tipo Vegetativo</th>
-                <th scope="col">Tipo de Campo</th>
+          <Table striped bordered hover variant="dark" style={Styles}>
+            <thead>
+              <tr >
+                <th style={Styles2}>Familia</th>
+                <th style={Styles2}>Especie</th>
+                <th style={Styles2}>Tipo Vegetativo</th>
+                <th style={Styles2}>Tipo de Campo</th>
               </tr>
             </thead>
             <tbody>
@@ -95,16 +106,15 @@ const ListadoPastura = (filtros) => {
                   onClick={() => {
                     handlePastura(pastura);
                     handleShow();
-                  }}
-                >
-                  <td>{pastura.Familia}</td>
-                  <td>{pastura.Especie}</td>
-                  <td>{pastura.TipoVegetativo}</td>
-                  <td>{pastura.TipoCampo}</td>
+                  }}>
+                  <td style={Styles3}>{pastura.Familia}</td>
+                  <td style={Styles3}>{pastura.Especie}</td>
+                  <td style={Styles3}>{pastura.TipoVegetativo}</td>
+                  <td style={Styles3}>{pastura.TipoCampo}</td>
                 </tr>
               ))}
             </tbody>
-          </table>
+          </Table>
         </div>
       </div>
 
