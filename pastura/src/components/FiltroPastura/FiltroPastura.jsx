@@ -26,6 +26,11 @@ const FiltroPastura = () => {
     FormaLamina: "",
     Canaliculada: "",
     TipoLamina: "",
+    Apice: "",
+    NervaduraCentralMarcada: "",
+    Pelos: "",
+    CicloVida: "",
+    CicloProductivo: "",
     TipoProductivo: "",
   });
 
@@ -255,6 +260,95 @@ const FiltroPastura = () => {
           <option value="Navicular">Navicular</option>
           <option value="Plegada">Plegada</option>
           <option value="Navicular a plana">Navicular a plana</option>
+        </select>
+        <select
+          class="form-select form-select-sm mb-3"
+          aria-label=".form-select-lg example"
+          style={styles.Filtro}
+          onChange={(e) => {
+            setFiltros({
+              ...filtros,
+              Apice: e.target.value,
+            });
+          }}
+        >
+          <option value="" selected>
+            -- Apice --
+          </option>
+          <option value="Agudo">Agudo</option>
+          <option value="Obtuso">Obtuso</option>
+        </select>
+        <select
+          class="form-select form-select-sm mb-3"
+          aria-label=".form-select-lg example"
+          style={styles.Filtro}
+          onChange={(e) => {
+            setFiltros({
+              ...filtros,
+              NervaduraCentralMarcada: e.target.value,
+            });
+          }}
+        >
+          <option value="" selected>
+            -- Nervadura central marcada --
+          </option>
+          <option value={true}>Si</option>
+          <option value={false}>No</option>
+        </select>
+        <select
+          class="form-select form-select-sm mb-3"
+          aria-label=".form-select-lg example"
+          style={styles.Filtro}
+          onChange={(e) => {
+            setFiltros({
+              ...filtros,
+              Pelos: e.target.value,
+            });
+          }}
+        >
+          <option value="" selected>
+            -- Pelos --
+          </option>
+          <option value="Glabra">Glabra</option>
+          <option value="Glabra o Pubecente">Glabra o Pubecente</option>
+          <option value="Pubecente">Pubecente</option>
+          <option value="Pubescente">Pubescente</option>
+          <option value="Glabra o Pubescente">Glabra o Pubescente</option>
+          <option value="Poco a nada">Poco a nada</option>
+        </select>
+        <select
+          class="form-select form-select-sm mb-3"
+          aria-label=".form-select-lg example"
+          style={styles.Filtro}
+          onChange={(e) => {
+            setFiltros({
+              ...filtros,
+              CicloVida: e.target.value,
+            });
+          }}
+        >
+          <option value="" selected>
+            -- Ciclo de vida --
+          </option>
+          <option value="Anual">Anual</option>
+          <option value="Perene">Perene</option>
+        </select>
+        <select
+          class="form-select form-select-sm mb-3"
+          aria-label=".form-select-lg example"
+          style={styles.Filtro}
+          onChange={(e) => {
+            setFiltros({
+              ...filtros,
+              CicloProductivo: e.target.value,
+            });
+          }}
+        >
+          <option value="" selected>
+            -- Ciclo Productivo --
+          </option>
+          <option value="Invernal">Invernal</option>
+          <option value="Estival">Estival</option>
         </select>
         <select
           class="form-select form-select-sm mb-3"

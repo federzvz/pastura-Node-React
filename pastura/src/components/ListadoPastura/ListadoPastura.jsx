@@ -107,6 +107,36 @@ const filtrarPasturas = (pasturas, filtros) => {
     );
   }
 
+  if (filtrosAplicados.Apice !== "") {
+    pasturasFiltradas = pasturasFiltradas.filter(
+      (pastura) => pastura.Apice === filtrosAplicados.Apice
+    );
+  }
+
+  if (filtrosAplicados.NervaduraCentralMarcada !== "") {
+    pasturasFiltradas = pasturasFiltradas.filter(
+      (pastura) => pastura.NervaduraCentralMarcada === filtrosAplicados.NervaduraCentralMarcada
+    );
+  }
+
+  if (filtrosAplicados.Pelos !== "") {
+    pasturasFiltradas = pasturasFiltradas.filter(
+      (pastura) => pastura.Pelos === filtrosAplicados.Pelos
+    );
+  }
+
+  if (filtrosAplicados.CicloVida !== "") {
+    pasturasFiltradas = pasturasFiltradas.filter(
+      (pastura) => pastura.CicloVida === filtrosAplicados.CicloVida
+    );
+  }
+
+  if (filtrosAplicados.CicloProductivo !== "") {
+    pasturasFiltradas = pasturasFiltradas.filter(
+      (pastura) => pastura.CicloProductivo === filtrosAplicados.CicloProductivo
+    );
+  }
+
   if (filtrosAplicados.TipoProductivo !== "") {
     pasturasFiltradas = pasturasFiltradas.filter(
       (pastura) => pastura.TipoProductivo === filtrosAplicados.TipoProductivo
