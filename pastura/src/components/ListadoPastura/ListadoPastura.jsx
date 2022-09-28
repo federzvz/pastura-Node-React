@@ -1,26 +1,25 @@
 import React, { useState, useEffect, Fragment } from "react";
 import axios from "axios";
 import CustomModal from "../DetallePastura/DetallePastura";
-import Table from 'react-bootstrap/Table';
+import Table from "react-bootstrap/Table";
 
 // const styles = {
 //   Table: {
 //     width: "80%",
-    // marginTop: "210px",
+// marginTop: "210px",
 //   },
 // };
-const Styles={
-  width: "100%"
+const Styles = {
+  width: "100%",
 };
-const Styles2={
-  fontSize: "1.5rem"
+const Styles2 = {
+  fontSize: "1.5rem",
 };
-const Styles3={
-  fontSize: "1.2rem"
+const Styles3 = {
+  fontSize: "1.2rem",
 };
 
-
-const mostrarElementoSeleccionado = (objeto) => { };
+const mostrarElementoSeleccionado = (objeto) => {};
 
 const filtrarPasturas = (pasturas, filtros) => {
   let pasturasFiltradas = pasturas;
@@ -115,7 +114,9 @@ const filtrarPasturas = (pasturas, filtros) => {
 
   if (filtrosAplicados.NervaduraCentralMarcada !== "") {
     pasturasFiltradas = pasturasFiltradas.filter(
-      (pastura) => pastura.NervaduraCentralMarcada === filtrosAplicados.NervaduraCentralMarcada
+      (pastura) =>
+        pastura.NervaduraCentralMarcada ===
+        filtrosAplicados.NervaduraCentralMarcada
     );
   }
 
@@ -166,41 +167,44 @@ const ListadoPastura = (filtros) => {
 
   return (
     <Fragment>
-      <div>
-        <div className="row" >
-          <div className="col-12">
-            <h2>Listado de Pasturas</h2>
+      <div >
+        <div>
+          <div>
+            <div className="col-12">
+              <h2>Listado de Pasturas</h2>
+            </div>
           </div>
         </div>
-      </div>
-      <div className="row">
-        <div className="col-12">
-          <Table striped bordered hover variant="dark" style={Styles}>
-            <thead>
-              <tr >
-                <th style={Styles2}>Familia</th>
-                <th style={Styles2}>Especie</th>
-                <th style={Styles2}>Tipo Vegetativo</th>
-                <th style={Styles2}>Tipo de Campo</th>
-              </tr>
-            </thead>
-            <tbody>
-              {filtrarPasturas(pasturas, filtros).map((pastura) => (
-                <tr
-                  className="fila"
-                  key={pastura._id}
-                  onClick={() => {
-                    handlePastura(pastura);
-                    handleShow();
-                  }}>
-                  <td style={Styles3}>{pastura.Familia}</td>
-                  <td style={Styles3}>{pastura.Especie}</td>
-                  <td style={Styles3}>{pastura.TipoVegetativo}</td>
-                  <td style={Styles3}>{pastura.TipoCampo}</td>
+        <div className="row">
+          <div className="col-12">
+            <Table striped bordered hover variant="dark" style={Styles}>
+              <thead>
+                <tr>
+                  <th style={Styles2}>Familia</th>
+                  <th style={Styles2}>Especie</th>
+                  <th style={Styles2}>Tipo Vegetativo</th>
+                  <th style={Styles2}>Tipo de Campo</th>
                 </tr>
-              ))}
-            </tbody>
-          </Table>
+              </thead>
+              <tbody>
+                {filtrarPasturas(pasturas, filtros).map((pastura) => (
+                  <tr
+                    className="fila"
+                    key={pastura._id}
+                    onClick={() => {
+                      handlePastura(pastura);
+                      handleShow();
+                    }}
+                  >
+                    <td style={Styles3}>{pastura.Familia}</td>
+                    <td style={Styles3}>{pastura.Especie}</td>
+                    <td style={Styles3}>{pastura.TipoVegetativo}</td>
+                    <td style={Styles3}>{pastura.TipoCampo}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </Table>
+          </div>
         </div>
       </div>
 
