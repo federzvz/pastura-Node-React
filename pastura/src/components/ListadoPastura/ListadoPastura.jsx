@@ -166,7 +166,7 @@ const ListadoPastura = (filtros) => {
 
   return (
     <Fragment>
-      <div style={{marginTop: "210px"}}>
+      <div>
         <div className="row" >
           <div className="col-12">
             <h2>Listado de Pasturas</h2>
