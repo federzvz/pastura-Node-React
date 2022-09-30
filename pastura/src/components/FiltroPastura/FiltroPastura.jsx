@@ -6,6 +6,10 @@ const styles = {
   Filtro: {
     fontSize: "0.7rem",
   },
+  Button: {
+    width: "70%",
+    fontSize: "0.7rem",
+  }
 };
 
 const FiltroPastura = () => {
@@ -442,8 +446,8 @@ const FiltroPastura = () => {
             <div className="col-4">
               <button
                 type="button"
-                class="btn btn-outline-secondary"
-                style={styles.Filtro}
+                class="btn btn-secondary"
+                style={styles.Button}
                 onClick={() => {
                   // set all selects index to 0
                   document.getElementById("TipoVegetativo").selectedIndex = 0;

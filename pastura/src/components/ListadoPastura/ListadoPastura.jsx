@@ -35,13 +35,6 @@ const filtrarPasturas = (pasturas, filtros) => {
   }
 
   if (filtrosAplicados.RizomaEngrosado !== "") {
-    console.log(
-      "pasturas:",
-      pasturasFiltradas[0].RizomaEngrosado.toString(),
-      "filtros:",
-      filtrosAplicados.RizomaEngrosado
-    );
-
     pasturasFiltradas = pasturasFiltradas.filter((pastura) => {
       if (pastura.RizomaEngrosado !== undefined) {
         return (
@@ -113,11 +106,14 @@ const filtrarPasturas = (pasturas, filtros) => {
   }
 
   if (filtrosAplicados.NervaduraCentralMarcada !== "") {
-    pasturasFiltradas = pasturasFiltradas.filter(
-      (pastura) =>
-        pastura.NervaduraCentralMarcada ===
-        filtrosAplicados.NervaduraCentralMarcada
-    );
+    pasturasFiltradas = pasturasFiltradas.filter((pastura) => {
+      if (pastura.NervaduraCentralMarcada !== undefined) {
+        return (
+          pastura.NervaduraCentralMarcada.toString() ==
+          filtrosAplicados.NervaduraCentralMarcada
+        );
+      }
+    });
   }
 
   if (filtrosAplicados.Pelos !== "") {
@@ -167,7 +163,7 @@ const ListadoPastura = (filtros) => {
 
   return (
     <Fragment>
-      <div >
+      <div>
         <div>
           <div>
             <div className="col-12">
@@ -177,6 +173,7 @@ const ListadoPastura = (filtros) => {
         </div>
         <div className="row">
           <div className="col-12">
+          <div class="table-responsive">
             <Table striped bordered hover variant="dark" style={Styles}>
               <thead>
                 <tr>
@@ -204,6 +201,7 @@ const ListadoPastura = (filtros) => {
                 ))}
               </tbody>
             </Table>
+            </div>
           </div>
         </div>
       </div>

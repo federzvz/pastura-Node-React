@@ -29,8 +29,16 @@
   cursor: pointer;
 }
 .fila:hover {
-  transform: scale(1.1);
+  height: 60px;
+  line-height: 24px;
+  vertical-align: middle;
+  
 }
 thead > th{
   font-size: 5rem !important;
+}
+
+.col-4 > button{
+  width: 100%;
+  font-size: 0.7rem !important;
 }
