@@ -51,3 +51,9 @@ exports.pastura_getAll = function (req, res,next) {
         res.send(pasturas);
     });
 }
+exports.pastura_get = function (req, res,next) {
+    Pastura.find({}, function (err, pasturas) {
+        if (err) return next(err);
+        res.send(pasturas);
+    });
+}
