@@ -3,6 +3,7 @@ var Schema = mongoose.Schema;
 
 var PasturaSchema = new Schema({
 	_id: mongoose.Schema.Types.ObjectId,
+    id: Number,
     Familia: String,
     Especie: String,
     TipoVegetativo: String,
@@ -30,6 +31,14 @@ var PasturaSchema = new Schema({
     TipoCampo: String,
 });
 
+PasturaSchema.pre("save", function(next){
+    var docs = this;
+    mongoose.model('Pastura', PasturaSchema).countDocuments(function(error, counter){
+        if(error) return next(error);
+        docs.id = counter+1;
+        next();
+    });
+});
 
 // Export the model
 module.exports = mongoose.model('Pastura', PasturaSchema);

@@ -1,6 +1,11 @@
 var mongoose = require('mongoose');
 const Pastura = require('../models/pastura.model');
 
+exports.emptyRoute = function (req, res) {
+    res.setHeader('Content-Range', 'pasturas 0-20/20');
+    res.json({});
+};
+
 exports.test = function (req, res) {
     res.send('API PASTURA BACKEND ANDANDO');
 };
@@ -48,18 +53,20 @@ exports.pastura_create = function (req, res,next) {
 exports.pastura_getAll = function (req, res,next) {
     Pastura.find({}, function (err, pasturas) {
         if (err) return next(err);
-        res.send(pasturas);
+        res.json(pasturas);
     });
 }
 exports.pastura_get = function (req, res) {
     Pastura.find({}, function (err, pasturas) {
         if (err) return next(err);
-        res.send(pasturas);
+        res.json(pasturas);
     });
 }
 exports.pastura_pasturas = function (req, res) {
     Pastura.find({}, function (err, pasturas) {
         if (err) return next(err);
+        res.setHeader('X-Total-Count', pasturas.length);
+        res.setHeader('Content-Range', 'pasturas 0-20/' + pasturas.length);
         res.send(pasturas);
     });
 }

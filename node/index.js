@@ -12,6 +12,14 @@ app.use(cors({
     origin: '*'
 }));
 
+app.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
+    res.header('Access-Control-Expose-Headers', 'Content-Range');
+    res.header('Access-Control-Expose-Headers', 'X-Total-Count');
+    next();
+});
+
 
 // Conexion a mongo
 var mongoose = require('mongoose');
