@@ -62,6 +62,7 @@ exports.pastura_get = function (req, res) {
         res.json(pasturas);
     });
 }
+
 exports.pastura_pasturas = function (req, res) {
     Pastura.find({}, function (err, pasturas) {
         if (err) return next(err);
@@ -70,3 +71,17 @@ exports.pastura_pasturas = function (req, res) {
         res.send(pasturas);
     });
 }
+
+exports.pastura_edit = function (req, res, next) {
+    Pastura.find({}, function(err, pasturas) {
+        var pasturaMap = [];
+        pasturas.forEach(function(pastura) {
+            if(pastura.id == req.params.id){
+                pasturaMap.push(pastura);
+            }
+        });
+        res.send(
+            pasturaMap[0]
+        );
+    })
+};
