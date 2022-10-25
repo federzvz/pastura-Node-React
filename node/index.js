@@ -4,6 +4,7 @@ const path = require('path');
 
 // Importar las rutas de los productos
 const pastura = require('./routes/pastura.route'); 
+const usuario = require('./routes/usuario.route');
 //const cors = require('cors');
 const app = express();
 const cors = require('cors');
@@ -37,6 +38,7 @@ app.use(bodyParser.urlencoded({extended: false}));
 //app.use(express.static(__dirname + '/views'));
 
 app.use('/pasturas', pastura);
+app.use('/usuarios', usuario);
 
 //app.use(cors());
 
