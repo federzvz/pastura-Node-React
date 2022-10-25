@@ -29,6 +29,7 @@ var PasturaSchema = new Schema({
     CicloProductivo: String,
     TipoProductivo: String,
     TipoCampo: String,
+    Imagen: String,
 });
 
 PasturaSchema.pre("save", function(next){
