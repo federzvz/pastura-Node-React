@@ -10,5 +10,6 @@ router.get('/all', pastura_controller.pastura_get);
 router.get('/pasturas', pastura_controller.pastura_pasturas);
 router.get('/pasturas/:id', pastura_controller.pastura_edit);
 router.delete('/pasturas/:id', pastura_controller.pastura_delete);
+router.put('/pasturas/:id', pastura_controller.pastura_update);
 
 module.exports = router;

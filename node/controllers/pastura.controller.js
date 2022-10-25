@@ -95,3 +95,37 @@ exports.pastura_delete = function (req, res, next) {
     });
   });
 };
+
+exports.pastura_update = function (req, res, next) {
+  console.log(req.body);
+  Pastura.find({}, function (err, pasturas) {
+    pasturas.forEach(function (pastura) {
+      if (pastura.id == req.params.id) {
+        console.log(pastura._id);
+        Pastura.findByIdAndUpdate(
+          pastura._id,
+          { $set: req.body } ,
+          function (err) {
+          if (err) return next(err);
+          res.send("Pastura Actualizada satisfactoriamente");
+        });
+      }
+    });
+  });
+};
+// {name: req.body.name, price: req.body.price}
+// exports.pastura_update = function (req, res, next) {
+//   Pastura.find({}, function (err, pasturas) {
+//     pasturas.forEach(function (pastura) {
+//       if (pastura.id == req.params.id) {
+//         console.log(pastura._id);
+//         Pastura.findByIdAndUpdate(pastura._id,{ $set: req.body },
+//           function (err, pastura) {
+//             if (err) return next(err);
+//             res.send("Pastura actualizado satisfactoriamente");
+//           }
+//         );
+//       }
+//     });
+//   });
+// };
