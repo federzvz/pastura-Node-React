@@ -38,6 +38,7 @@ exports.pastura_create = function (req, res, next) {
     CicloProductivo: req.body.CicloProductivo,
     TipoProductivo: req.body.TipoProductivo,
     TipoCampo: req.body.TipoCampo,
+    Imagen: req.body.Imagen,
   });
 
   pastura.save(function (err) {
