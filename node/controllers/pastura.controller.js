@@ -11,6 +11,12 @@ exports.test = function (req, res) {
 };
 
 exports.pastura_create = function (req, res, next) {
+  if(req.body.NervaduraCentralMarcada == ""){
+    req.body.NervaduraCentralMarcada = false;
+  }
+  if(req.body.RizomaEngrosado == ""){
+    req.body.RizomaEngrosado = false;
+  }
   let pastura = new Pastura({
     _id: new mongoose.Types.ObjectId(),
     Familia: "Gramineas",
@@ -45,7 +51,7 @@ exports.pastura_create = function (req, res, next) {
     if (err) {
       return next(err);
     }
-    res.send("Pastura creado satisfactoriamente");
+    res.json(pastura);
   });
 };
 
@@ -99,6 +105,12 @@ exports.pastura_delete = function (req, res, next) {
 
 exports.pastura_update = function (req, res, next) {
   console.log(req.body);
+  if(req.body.NervaduraCentralMarcada == ""){
+    req.body.NervaduraCentralMarcada = false;
+  }
+  if(req.body.RizomaEngrosado == ""){
+    req.body.RizomaEngrosado = false;
+  }
   Pastura.find({}, function (err, pasturas) {
     pasturas.forEach(function (pastura) {
       if (pastura.id == req.params.id) {
@@ -108,7 +120,7 @@ exports.pastura_update = function (req, res, next) {
           { $set: req.body } ,
           function (err) {
           if (err) return next(err);
-          res.send("Pastura Actualizada satisfactoriamente");
+          res.json(pastura);
         });
       }
     });
