@@ -96,7 +96,7 @@ exports.pastura_delete = function (req, res, next) {
         console.log(pastura._id);
         Pastura.findByIdAndRemove(pastura._id, function (err) {
           if (err) return next(err);
-          res.send("Pastura eliminado satisfactoriamente");
+          res.json(pastura);
         });
       }
     });
