@@ -187,6 +187,12 @@ exports.pastura_pasturas = function (req, res) {
       pasturas = pasturas.filter(pastura => pastura.CicloProductivo == 'Estival');
     }
 
+    pasturas.forEach(function (pastura) {
+      if (pastura.Imagen == undefined || pastura.Imagen == null) {
+        pastura.Imagen = 'https://www.colombianosune.com/sites/default/files/asociaciones/NO_disponible-43_7.jpg';
+      }
+    });
+
     res.setHeader("X-Total-Count", pasturas.length);
     res.setHeader("Content-Range", "pasturas 0-20/" + pasturas.length);
     res.send(pasturas);
