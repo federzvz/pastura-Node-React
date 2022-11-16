@@ -99,6 +99,8 @@ exports.pastura_pasturas = function (req, res) {
       pasturas = pasturas.filter(pastura => pastura.Mocollo1 == 'Semi rollizo');
     } else if (req.query.Mocollo1 == 'Comprimido') {
       pasturas = pasturas.filter(pastura => pastura.Mocollo1 == 'Comprimido');
+    } else if (req.query.Mocollo1 == 'Semi Comprimido') {
+      pasturas = pasturas.filter(pastura => pastura.Mocollo1 == 'Semi Comprimido');
     } else if (req.query.Mocollo1 == 'Semi Rolliza') {
       pasturas = pasturas.filter(pastura => pastura.Mocollo1 == 'Semi Rolliza');
     } else if (req.query.Mocollo1 == 'Rollizo') {
@@ -189,7 +191,7 @@ exports.pastura_pasturas = function (req, res) {
 
     pasturas.forEach(function (pastura) {
       if (pastura.Imagen == undefined || pastura.Imagen == null) {
-        pastura.Imagen = 'https://www.colombianosune.com/sites/default/files/asociaciones/NO_disponible-43_7.jpg';
+        pastura.Imagen = 'https://res.cloudinary.com/dtl1jqk2y/image/upload/v1668464407/qtprxwahdo1jraapkpad.jpg';
       }
     });
 
